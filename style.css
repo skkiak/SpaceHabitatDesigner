@@ -1,0 +1,289 @@
+@font-face{font-family:Inter;src:local('Inter'), local('Arial');}
+:root{
+  --bg:#0b0b0c; --panel:#0f1112; --muted:#9aa0a6; --accent:#ff6a3d;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box;font-family:Inter, system-ui, Arial, sans-serif;color:#e9eef2}
+body{user-select: none; margin:0;background:linear-gradient(180deg,#0f0f0fe7 0%, #000000ec 100%);min-height:100vh;display:flex;flex-direction:column}
+.topbar{ display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:transparent;position:sticky;top:0;z-index:10}
+.brand{font-weight:700;font-size:20px}
+.nav a{
+    color:var(--muted);
+    margin-left:22px;
+    text-decoration:none;
+    position: relative; /* Для псевдоэлемента */
+    padding-bottom: 5px; /* Для линии */
+}
+.nav a.active,
+.nav a:hover{
+    color:white;
+}
+
+/* Эффект оранжевого подчеркивания */
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease-out;
+}
+.nav a:hover::after,
+.nav a.active::after {
+    width: 100%;
+}
+
+
+main{flex:1;padding:28px 32px;max-width:1200px;margin:0 auto;width:100%}
+
+/* Hero Section */
+.hero{display:flex;justify-content:space-between;align-items:center;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.05), transparent);border-radius:18px;margin-top:20px;min-height:400px}
+.hero-left{flex:1;max-width:500px}
+.hero-left h1{font-size:48px;line-height:1.2;margin-bottom:10px}
+.hero-left h1 span{color:var(--accent)}
+.subtitle{color:var(--muted);font-size:18px;margin-bottom:25px}
+.cta{background-color:var(--accent);color:var(--bg);padding:10px 20px;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:background-color 0.2s}
+.cta:hover{background-color:#ff8059}
+
+/* Planet Display */
+.hero-right{display:flex;flex-direction:column;align-items:center}
+.planet-wrap{position:relative;width:300px;height:300px}
+#planetImg{width:100%;height:100%;object-fit:cover;border-radius:50%;border:4px solid var(--accent);box-shadow:0 0 20px var(--accent);transition:all 0.4s}
+.planet-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);border:1px solid var(--accent);color:white;padding:10px;border-radius:50%;cursor:pointer;z-index:5}
+#prevBody{left:-20px}
+#nextBody{right:-20px}
+
+/* Tabs and Panels */
+.tab{display:none;padding-top:20px}
+.tab.visible{display:block}
+.panel{background:var(--panel);padding:20px;border-radius:12px;margin-bottom:20px}
+
+/* Editor Layout */
+.editor-grid{display:grid;grid-template-columns:300px 1fr;gap:20px}
+.dims-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dims-grid input, .dims-grid select, .dims-grid button{padding:8px;border-radius:5px;border:1px solid var(--glass);background:var(--glass); color: white;}
+.dims-grid button{grid-column:1/span 2;background-color:var(--accent);color:var(--bg)}
+.dims-grid button:hover{background-color:#ff8059}
+.dims-grid label{color:var(--muted);font-size:14px;display:flex;flex-direction:column}
+.dims-grid label input {color: white;}
+
+/* Canvas */
+.canvas-wrap{background:var(--panel);padding:20px;border-radius:12px;display:flex;justify-content:center;align-items:center;height:400px}
+#floorCanvas{width:100%;height:100%;max-width:800px;max-height:400px;background:var(--bg);border-radius:12px}
+.zone-rect{cursor:grab;stroke-width:2px;fill-opacity:0.06}
+.resize-handle{cursor:nwse-resize;fill:rgba(255,255,255,0.2)}
+.analytics{padding:20px;background:var(--panel);border-radius:12px;margin-top:20px}
+.save-row{display:flex;justify-content:space-between;gap:10px;margin-top:15px}
+.save-row button{flex:1;padding:10px}
+
+/* Zone List */
+.zones-list{margin-top:10px}
+.zone-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--glass)}
+.zone-item button{margin-left:8px;padding:4px 8px;font-size:12px}
+.add-zone{display:flex;gap:10px;margin-top:15px}
+.add-zone select{flex:1;padding:8px;border-radius:5px;border:1px solid var(--glass);background:var(--glass);color: white;}
+
+/* Modal (Room Editor) */
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;justify-content:center;align-items:center;z-index:20}
+.modal.hidden{display:none}
+.modal-content{background:var(--panel);padding:30px;border-radius:12px;width:450px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+
+/* Furniture Constructor Styles */
+.furniture-constructor {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+#newFurnitureName {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--glass);
+    background: var(--glass);
+    color: white;
+}
+.furniture-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.furniture-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.furniture-list li:last-child {
+    border-bottom: none;
+}
+.furniture-list .remove-furniture-btn {
+    background: #e74c3c;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.furniture-list .remove-furniture-btn:hover {
+    background: #c0392b;
+}
+
+
+/* Typography and common styles */
+.footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
+.small{font-size:13px;color:var(--muted)}
+
+/* General button styling */
+button {
+  background-color: var(--accent);
+  border: 0;
+  border-radius: 5px;
+  color: var(--bg);
+  font-weight: bolder;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+button:hover {
+  background-color: #ff8059;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .editor-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-right {
+    margin-top: 30px;
+  }
+}
+#len {
+  width: 100px;
+  background-color: #1d1d1d;
+}
+#wid {
+  width: 100px;
+  background-color: #1d1d1d;
+}
+#hgt {
+  width: 100px;
+  background-color: #1d1d1d;
+}
+#crew {
+  width: 100px;
+  background-color: #1d1d1d;
+}
+#shapeSelect {
+  background-color: #1d1d1d;
+  width: 100px;
+}
+#newZoneType {
+  background-color: #1d1d1d;
+}
+.span {
+  color: #ff6a3d;
+}
+.inter {
+  color: rgb(242, 255, 0);
+}
+.red {
+  color: rgb(205, 0, 0);
+}
+.blue {
+  color: darkturquoise;
+}
+.green {
+  color: green;
+}
+.esa {
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  height: 400px;
+  background: linear-gradient(135deg, #150b0670, #0000004d);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Заголовок */
+.esa h2 {
+  font-size: 2rem;
+  color: #df4e00;
+  margin-bottom: 10px;
+}
+
+/* Текст */
+.esa p {
+  font-size: 1rem;
+  color: #d1d5db;
+  margin-bottom: 25px;
+}
+
+/* Ссылки */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.contact-links a {
+  display: block;
+  width: 80%;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.contact-links a.email {
+  background: #ef4444;
+}
+.contact-links a.email:hover {
+  background: #dc2626;
+}
+
+.contact-links a.telegram {
+  background: #3b82f6;
+}
+.contact-links a.telegram:hover {
+  background: #2563eb;
+}
+
+.contact-links a.github {
+  background: #374151;
+}
+.contact-links a.github:hover {
+  background: #4b5563;
+}
+.hero-left {
+  width: 700px;
+}
+button.editZone {
+  width: 90px;
+  text-align: center;
+  font-size: 11px;
+  margin: 0;
+  align-items: center ;
+}
+a {
+  color: rgb(0, 255, 255);
+  /* color: brown; */
+}

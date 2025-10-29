@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mars Habitat Designer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Space Habitat Designer</div>
+    <nav class="nav">
+      <a href="#" data-tab="home"class="active">Home</a>
+      <a href="#" data-tab="about">About</a>
+      <a href="#" data-tab="editor">Editor</a>
+      <a href="#" data-tab="contacts">Contact</a>
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- Home / Hero -->
+    <section id="home" class="tab visible">
+      <div class="hero">
+        <div class="hero-left">
+          <h1>Space Habitat<br/><span>Designer</span></h1>
+          <p class="subtitle">Interactive simulator for housing design in space</p>
+          <button id="startBtn" class="cta">To start</button>
+        </div>
+        <div class="hero-right">
+          <div class="planet-wrap">
+            <button class="planet-arrow" id="prevBody">&lt;</button>
+            <img src="assets/mars.jpeg" id="planetImg" alt="planet"/>
+            <button class="planet-arrow" id="nextBody">&gt;</button>
+          </div>
+          <h2 id="planetLabel">Mars</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+<section id="about" class="tab">
+  <div class="panel">
+    <h2><span class="span">Space Habitat Designer: </span><span class="inter">Interactive Simulator</span></h2>
+    <p>The <strong class="inter">Space Habitat Designer</strong> project is an interactive tool for simulating and optimizing the design of autonomous living and working modules in extraterrestrial environments. Created to address key challenges in space architecture, our simulator allows engineers, architects, and enthusiasts to design functional and safe space habitats.</p>
+
+    <h3 class="span">Features and Functionality</h3>
+    <ul class="feature-list" style="list-style: disc; padding-left: 20px;">
+      <li>
+        <strong class="inter">Habitat Selection:</strong> You can choose one of several locations (Mars, Moon, ISS, or Transit Module) to adapt your design to the unique conditions of each environment, including gravity and atmospheric features.
+      </li>
+      <li>
+        <strong class="inter">Modular Approach:</strong> Define the primary parameters of your module (length, width, shape, height, and crew size) and operate within realistic structural constraints.
+      </li>
+      <li>
+        <strong class="inter">Detailed Planning and Zoning:</strong> Use an intuitive editor to create functional zones (Crew Quarters, Laboratory, Galley, Hygiene Module, and others). Each zone can be moved, scaled, and filled with necessary equipment.
+      </li>
+      <li>
+        <strong class="inter">Analytics and Life Support:</strong> The system provides real-time critical data, including the calculation of minimum space per person, and warns of the absence of essential zones (e.g., hygiene or medical modules).
+      </li>
+      <li>
+        <strong class="inter">Project Export:</strong> The final design can be exported as a <strong class="span">JSON</strong> file for further data analysis or as a **PNG** image for presenting ideas.
+      </li>
+    </ul>
+    <p style="margin-top: 20px;"><strong class="span">Space Habitat Designer</strong> transforms the complex process of space architecture into an accessible and engaging task, helping to visualize and plan humanity's future beyond Earth.</p>
+
+    <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      <h2 class="span">Data Sources and Methodology</h2>
+      <p>The functionality and analytical checks in <strong class="inter">Space Habitat Designer</strong> are based on official documents and research papers from <strong class="inter">NASA</strong> and its partners.</p>
+
+      <p>The following key resources were used for calculations and modeling:</p>
+      <ul class="resource-list" style="list-style: disc; padding-left: 20px;">
+        <li>
+          <strong class="inter">Volume and Area Requirements:</strong> <strong class="green">“Defining the Net Habitable Volume for Long Duration Exploration Missions”</strong> (defines metrics, such as minimum volume per crew member, used in the analytics).
+        </li>
+        <li>
+          <strong class="inter">Concept and Mission:</strong> <strong class="green">“Moon to Mars Architecture Definition Document”</strong> (used to define mission scenarios and functions that the module must support).
+        </li>
+        <li>
+          <strong class="inter">Design Guidelines:</strong> <strong class="green">“Deep Space Habitation Design Guidelines”</strong> (forms the basis for the logic checking for critically required zones: medical, hygiene, galley).
+        </li>
+        <li>
+          <strong class="inter">Low Gravity Design:</strong> <strong class="green">"NASA’s Moon to Mars (M2M) Transit Habitat Refinement Point of Departure Design"</strong> (justifies special zone requirements, such as increased area for exercise in weightlessness or low gravity).
+        </li>
+      </ul>
+      <p style="margin-top: 15px;">These documents provide the scientific basis for ensuring your project is as close as possible to space engineering standards.</p>
+      
+      <h3 class="span" style="margin-top: 20px;">The Contribution of Artificial Intelligence (AI)</h3>
+      <p>Advanced Artificial Intelligence (AI) technologies were actively utilized in the development of the **Space Habitat Designer** interactive simulator to enhance code quality and accelerate the development process.</p>
+      <p>We used large language models, such as **Gemini**, as a powerful tool to **assist in writing, optimizing, and debugging the JavaScript code**. The AI model played a key role in:</p>
+      <ul class="resource-list" style="list-style: disc; padding-left: 20px;">
+        <li>
+          <strong class="inter">Generating Complex Algorithms:</strong> Used to create core data structures and logic, for example, for calculations within the **"Analytics and Life Support"** module.
+        </li>
+        <li>
+          <strong class="inter">Performance Optimization:</strong> Aided in refactoring and improving the JavaScript code to ensure the simulator runs smoothly and quickly.
+        </li>
+        <li>
+          <strong class="inter">Documentation Creation:</strong> Assisted in writing detailed comments and technical documentation for the functional parts of the project.
+        </li>
+      </ul>
+      <p style="margin-top: 15px;">Using **Gemini** allowed our team to focus on the complexities of space architecture while the AI ensured a high-quality, clean, and efficient codebase.</p>
+      </div>
+    
+    <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+      <h2 class="span">References</h2>
+      <ul class="resource-list" style="list-style: disc; padding-left: 20px;">
+        <li>
+          Image of Mars — Scientific American.<br>
+          Source: <a href="https://static.scientificamerican.com/sciam/cache/file/C454F5A6-536E-4C9F-AA6AF354BB85A85B_source.jpg">https://static.scientificamerican.com/sciam/cache/file/C454F5A6-536E-4C9F-AA6AF354BB85A85B_source.jpg</a>
+        </li>
+        <li>
+          Image of the Moon — Encyclopaedia Britannica (full moon).<br>
+          Source: <a href="https://cdn.britannica.com/96/208796-050-47869FC7-full-moon.jpg">https://cdn.britannica.com/96/208796-050-47869FC7-full-moon.jpg</a>
+        </li>
+        <li>
+          International Space Station (ISS) — NPR.<br>
+          Source: <a href="https://npr.brightspotcdn.com/88/34/911d670a44b4a5e7f40f11089d2c/iss-international-space-station.jpg">https://npr.brightspotcdn.com/88/34/911d670a44b4a5e7f40f11089d2c/iss-international-space-station.jpg</a>
+        </li>
+        <li>
+          Transit Module Concept (Mars) — WCCFTech.<br>
+          Source: <a href="https://cdn.wccftech.com/wp-content/uploads/2023/07/NASA-MARS.png">https://cdn.wccftech.com/wp-content/uploads/2023/07/NASA-MARS.png</a>
+        </li>
+      </ul>
+    </div>
+    <button data-tab="editor" class="cta" style="margin-top: 15px;">Start Design</button>
+  </div>
+</section>
+<!-- About end -->
+
+    <!-- Editor -->
+    <section id="editor" class="tab">
+      <div class="editor-grid">
+        <div class="editor-left">
+          <div class="panel">
+            <h4>Module Parameters</h4>
+            <div class="dims-grid">
+              <label>Length (m): <input id="len" type="number" value="8" min="1"></label>
+              <label>Width (м): <input id="wid" type="number" value="4" min="1"></label>
+              <label>Height (м): <input id="hgt" type="number" value="2.5" min="1"></label>
+              <label>Crew (ppl.): <input id="crew" type="number" value="4" min="1"></label>
+              <select id="shapeSelect">
+                <option value="cylinder">Cylinder</option>
+                <option value="box">Box</option>
+                <option value="sphere">Sphere</option>
+              </select>
+              <button id="applyDims">Apply</button>
+            </div>
+          </div>
+          
+          <div class="panel">
+            <h4>Module zones</h4>
+            <div id="zonesList" class="zones-list">
+              <!-- Зоны будут добавлены JS -->
+            </div>
+            
+            <div class="add-zone">
+              <select id="newZoneType">
+                <!-- Список зон теперь заполняется в app.js функцией populateZoneTypes() -->
+              </select>
+              <button id="addZone">Add zone</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-right">
+          <div class="canvas-wrap">
+            <!-- Canvas: Размер 800x400 для floorplan -->
+            <svg id="floorCanvas" viewBox="0 0 800 400"></svg>
+          </div>
+          <div class="analytics" id="analytics">
+            <h4>Analytics</h4>
+            <div id="analyticsContent">Nothing Selected</div>
+            <div class="save-row">
+              <button id="exportJSON">Export JSON</button>
+              <button id="exportPNG">Export PNG</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room editor modal -->
+      <div id="roomEditor" class="modal hidden">
+        <div class="modal-content">
+          <h3 id="roomEditorTitle">Zone editor</h3>
+          
+          <!-- Конструктор мебели -->
+          <div class="furniture-constructor">
+            <input type="text" id="newFurnitureName" placeholder="Furniture name">
+            <button id="addFurnitureBtn">Add Item</button>
+          </div>
+          
+          <h4>Current Furniture:</h4>
+          <ul class="furniture-list" id="furnitureList">
+            <!-- Мебель будет добавлена JS -->
+          </ul>
+          
+          <div class="modal-actions">
+            <button id="closeRoom">Close</button>
+            <button id="saveRoom">Save</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <section id="contacts" class="tab">
+  <div class="esa">
+    <h2>Contacts</h2>
+    <p>Contact the team via</p>
+
+    <div class="contact-links">
+      <a href="mailto:akaymambetzhanov@gmail.com" class="email">
+        <strong>Email:</strong> akaymambetzhanov@gmail.com
+      </a>
+
+      <a href="https://t.me/skkiak" target="_blank" class="telegram">
+        <strong>Telegram:</strong> @skkiak
+      </a>
+
+      <a href="https://github.com/skkiak" target="_blank" class="github">
+        <strong>GitHub:</strong> skkiak
+      </a>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer">© Space Habitat Designer — prototype.</footer>
+
+  <!-- Script setup -->
+  <script src="app.js"></script>
+</body>
+</html>
